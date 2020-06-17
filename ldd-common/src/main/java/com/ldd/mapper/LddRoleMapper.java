@@ -1,4 +1,4 @@
-package com.ldd.dao;
+package com.ldd.mapper;
 
 import com.ldd.model.LddRole;
 import com.ldd.model.LddRoleExample;

@@ -1,77 +1,36 @@
 package com.ldd.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddAdminUser implements Serializable {
-    /**
-     * 主键
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "主键")
     private Long userId;
 
-    /**
-     * 角色id
-     *
-     * @mbg.generated
-     */
-    private Long roleId;
-
-    /**
-     * 用户名
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "用户名")
     private String username;
 
-    /**
-     * md5加密密码串
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "md5加密密码串")
     private String password;
 
-    /**
-     * 用户头像路径
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "用户头像路径")
     private String logo;
 
-    /**
-     * 手机号
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "手机号")
     private String phone;
 
-    /**
-     * 邮箱
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "邮箱")
     private String email;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    /**
-     * 最后登录时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "最后登录时间")
     private Date loginTime;
 
-    /**
-     * 状态，0-禁用，1-正常
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "状态，0-禁用，1-正常")
     private Integer status;
 
     private static final long serialVersionUID = 1L;
@@ -82,14 +41,6 @@ public class LddAdminUser implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
     }
 
     public String getUsername() {
@@ -163,7 +114,6 @@ public class LddAdminUser implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", userId=").append(userId);
-        sb.append(", roleId=").append(roleId);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", logo=").append(logo);

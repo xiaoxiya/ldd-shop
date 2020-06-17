@@ -1,35 +1,21 @@
 package com.ldd.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddResourceCaregory implements Serializable {
-    /**
-     * 主键
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "主键")
     private Long categoryId;
 
-    /**
-     * 资源分类名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "资源分类名称")
     private Long categoryName;
 
-    /**
-     * 描述
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "描述")
     private String remark;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

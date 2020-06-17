@@ -1,4 +1,4 @@
-package com.ldd.dao;
+package com.ldd.mapper;
 
 import com.ldd.model.LddPermissionResource;
 import com.ldd.model.LddPermissionResourceExample;

@@ -3,14 +3,14 @@ package com.ldd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LddPermissionUserExample {
+public class LddPermissionRoleExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LddPermissionUserExample() {
+    public LddPermissionRoleExample() {
         oredCriteria = new ArrayList<>();
     }
 

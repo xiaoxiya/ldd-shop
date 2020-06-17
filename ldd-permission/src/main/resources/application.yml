@@ -6,7 +6,34 @@ spring:
     username: root
     password: root
 
+# mybatis mapper映射文件路径
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
+    - classpath:com/**/dao/*.xml
     - classpath*:com/**/mapper/*.xml
+
+#自定义jwt key
+jwt:
+  tokenHeader: Authorization #jwt存储的请求头
+  secret: mySecret #jwt加密使用的密钥
+  expiration: 604800 #jwt的超期时间（60*60*24）
+  tokenHead: Bearer #jwt负载中拿到开头
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+#      - /admin/info
+      - /admin/logout

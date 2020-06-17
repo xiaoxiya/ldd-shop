@@ -1,4 +1,4 @@
-package com.ldd.dao;
+package com.ldd.mapper;
 
 import com.ldd.model.LddAdminUser;
 import com.ldd.model.LddAdminUserExample;

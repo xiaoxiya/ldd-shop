@@ -1,49 +1,27 @@
 package com.ldd.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddMenu implements Serializable {
-    /**
-     * 主键
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "主键")
     private Long menuId;
 
-    /**
-     * 父级id
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "父级id")
     private Long parantId;
 
-    /**
-     * 菜单名
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "菜单名")
     private String menuName;
 
-    /**
-     * 菜单级数
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "菜单级数")
     private Integer menuLevel;
 
-    /**
-     * 菜单（前端）图标
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "菜单（前端）图标")
     private String icon;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

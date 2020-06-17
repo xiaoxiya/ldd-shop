@@ -1,27 +1,17 @@
 package com.ldd.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 public class LddRoleUser implements Serializable {
-    /**
-     * 主键
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "主键")
     private Long id;
 
-    /**
-     * 角色id
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "角色id")
     private Long roleId;
 
-    /**
-     * 用户id
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "用户id")
     private String userId;
 
     private static final long serialVersionUID = 1L;

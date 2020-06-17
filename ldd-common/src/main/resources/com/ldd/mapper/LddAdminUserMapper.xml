@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ldd.dao.LddAdminUserMapper">
+<mapper namespace="com.ldd.mapper.LddAdminUserMapper">
   <resultMap id="BaseResultMap" type="com.ldd.model.LddAdminUser">
     <id column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="role_id" jdbcType="BIGINT" property="roleId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
@@ -72,8 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, role_id, username, password, logo, phone, email, create_time, login_time, 
-    status
+    user_id, username, password, logo, phone, email, create_time, login_time, status
   </sql>
   <select id="selectByExample" parameterType="com.ldd.model.LddAdminUserExample" resultMap="BaseResultMap">
     select
@@ -106,23 +104,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ldd.model.LddAdminUser">
-    insert into ldd_admin_user (user_id, role_id, username, 
-      password, logo, phone, 
-      email, create_time, login_time, 
-      status)
-    values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER})
+    insert into ldd_admin_user (user_id, username, password, 
+      logo, phone, email, 
+      create_time, login_time, status
+      )
+    values (#{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ldd.model.LddAdminUser">
     insert into ldd_admin_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         user_id,
-      </if>
-      <if test="roleId != null">
-        role_id,
       </if>
       <if test="username != null">
         username,
@@ -152,9 +147,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
         #{userId,jdbcType=BIGINT},
-      </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -194,9 +186,6 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
-      </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
@@ -229,7 +218,6 @@
   <update id="updateByExample" parameterType="map">
     update ldd_admin_user
     set user_id = #{record.userId,jdbcType=BIGINT},
-      role_id = #{record.roleId,jdbcType=BIGINT},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       logo = #{record.logo,jdbcType=VARCHAR},
@@ -245,9 +233,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.ldd.model.LddAdminUser">
     update ldd_admin_user
     <set>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=BIGINT},
-      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
@@ -277,8 +262,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ldd.model.LddAdminUser">
     update ldd_admin_user
-    set role_id = #{roleId,jdbcType=BIGINT},
-      username = #{username,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

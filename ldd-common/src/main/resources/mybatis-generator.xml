@@ -32,7 +32,7 @@
         <!--指定生成mapper.xml的路径-->
         <sqlMapGenerator targetPackage="com.ldd.mapper" targetProject="ldd-common\src\main\resources"/>
         <!--指定生成mapper接口的的路径-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ldd.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ldd.mapper"
                              targetProject="ldd-common\src\main\java"/>
         <!--生成全部表tableName设为%-->
         <table tableName="%">
