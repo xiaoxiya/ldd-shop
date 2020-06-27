@@ -1,4 +1,4 @@
-package com.ldd.xiaoxiya.dto;
+package com.ldd.xiaoxiya.bo;
 
 import com.ldd.model.LddAdminUser;
 import com.ldd.model.LddPermissionResource;

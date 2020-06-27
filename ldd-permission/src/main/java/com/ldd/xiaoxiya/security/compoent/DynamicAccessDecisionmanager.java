@@ -20,6 +20,13 @@ import java.util.Iterator;
 public class DynamicAccessDecisionmanager implements AccessDecisionManager {
     /**
      * 权限校验方法
+     * 通过传递的参数来决定用户是否有访问对应受保护对象的权限
+     * @param authentication 包含了当前的用户信息，包括拥有的权限
+     * 这里的权限来源就是前面登录时UserDetailsService中设置的authorities。
+     * @param o 就是FilterInvocation对象，可以得到request等web资源
+     * @param configAttributes 本次访问需要的权限
+     * @throws AccessDeniedException
+     * @throws InsufficientAuthenticationException
      */
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
@@ -41,11 +48,21 @@ public class DynamicAccessDecisionmanager implements AccessDecisionManager {
         throw new AccessDeniedException("抱歉，您没有访问权限");
     }
 
+    /**
+     * 表示此AccessDecisionManager是否能够处理传递的ConfigAttribute呈现的授权请求
+     * @param configAttribute
+     * @return
+     */
     @Override
     public boolean supports(ConfigAttribute configAttribute) {
         return true;
     }
 
+    /**
+     * 表示当前AccessDecisionManager实现是否能够为指定的安全对象（方法调用或Web请求）提供访问控制决策
+     * @param aClass
+     * @return
+     */
     @Override
     public boolean supports(Class<?> aClass) {
         return true;

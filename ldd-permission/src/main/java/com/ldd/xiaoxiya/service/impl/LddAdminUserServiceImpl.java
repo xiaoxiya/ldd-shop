@@ -1,15 +1,19 @@
 package com.ldd.xiaoxiya.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
 import com.ldd.dao.LddPermissionUserRelationDao;
 import com.ldd.mapper.LddAdminUserMapper;
 import com.ldd.model.LddAdminUser;
 import com.ldd.model.LddAdminUserExample;
 import com.ldd.model.LddPermissionResource;
-import com.ldd.xiaoxiya.dto.AdminUserDeatails;
+import com.ldd.xiaoxiya.bo.AdminUserDeatails;
+import com.ldd.xiaoxiya.dto.LddAdminUserParam;
 import com.ldd.xiaoxiya.security.util.JWTUtil;
 import com.ldd.xiaoxiya.service.LddAdminUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,6 +25,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -55,18 +60,20 @@ public class LddAdminUserServiceImpl implements LddAdminUserService {
 
 
     @Override
-    public LddAdminUser register(LddAdminUser user) {
-        user.setCreateTime(new Date());
-        user.setStatus(1);
+    public LddAdminUser register(LddAdminUserParam user) {
+        LddAdminUser lddAdminUser = new LddAdminUser();
+        BeanUtils.copyProperties(user, lddAdminUser);
+        lddAdminUser.setCreateTime(new Date());
+        lddAdminUser.setStatus(1);
         //判断是否重名
         if(getAdminByUsername(user.getUsername()) != null) {
             return null;
         }
         //密码加密
-        String encodePassword = passwordEncoder.encode(user.getPassword());
+        String encodePassword = passwordEncoder.encode(lddAdminUser.getPassword());
         user.setPassword(encodePassword);
-        adminUserDao.insert(user);
-        return user;
+        adminUserDao.insert(lddAdminUser);
+        return lddAdminUser;
     }
 
     /**
@@ -125,5 +132,38 @@ public class LddAdminUserServiceImpl implements LddAdminUserService {
             return new AdminUserDeatails(adminUser, roleUsers);
         }
         throw new UsernameNotFoundException("用户名或密码错误");
+    }
+
+    @Override
+    public int deleteUserByUserId(Long adminId) {
+        return adminUserDao.deleteByPrimaryKey(adminId);
+    }
+
+    @Override
+    public int updateUser(Long adminid, LddAdminUser adminUser) {
+        adminUser.setUserId(adminid);
+        //未更新前的用户信息
+        LddAdminUser nowAdminUser = adminUserDao.selectByPrimaryKey(adminid);
+        if (nowAdminUser.getPassword().equals(adminUser.getPassword())) {
+            //与原密码相同，不需要修改
+            adminUser.setPassword(null);
+        } else {
+            if (StrUtil.isEmpty(adminUser.getPassword())){
+                adminUser.setPassword(null);
+            } else {
+                adminUser.setPassword(passwordEncoder.encode(adminUser.getPassword()));
+            }
+        }
+        return adminUserDao.updateByPrimaryKeySelective(adminUser);
+    }
+
+    @Override
+    public List<LddAdminUser> getUserInfoList(String keyword, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        LddAdminUserExample example = new LddAdminUserExample();
+        if (!StringUtils.isEmpty(keyword)) {
+            example.createCriteria().andUsernameLike('%'+keyword+'%');
+        }
+        return adminUserDao.selectByExample(example);
     }
 }
