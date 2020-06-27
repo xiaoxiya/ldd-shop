@@ -1,24 +1,32 @@
 package com.ldd.model;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddRole implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
     private Long roleId;
 
-    @ApiModelProperty(value = "角色名")
+    /**
+     * 角色名
+     */
     private String roleName;
 
-    @ApiModelProperty(value = "角色描述")
+    /**
+     * 角色描述
+     */
     private String remark;
 
-    @ApiModelProperty(value = "创建时间")
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
-    @ApiModelProperty(value = "状态，0-禁用，1-正常")
+    /**
+     * 状态，0-禁用，1-正常
+     */
     private Integer status;
 
     private static final long serialVersionUID = 1L;

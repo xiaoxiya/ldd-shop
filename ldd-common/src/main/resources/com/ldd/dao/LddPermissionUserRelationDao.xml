@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ldd.dao.LddPermissionUserRelationDao">
-    <select id="getUserPermission"  resultType="com.ldd.mapper.LddPermissionResourceMapper">
-      select * from ldd_permission_resource pr inner join (
-select pr.role_id, pr.permission_id, ru.user_id from ldd_permission_role pr, ldd_role_user ru where pr.role_id = ru.role_id and ru.user_id =#{adminId} ) r
+    <select id="getUserPermission"  resultType="com.ldd.model.LddPermissionResource">
+      select pr.* from ldd_permission_resource pr inner join (
+select pr.role_id, pr.permission_id, ru.user_id from ldd_permission_role pr, ldd_role_user ru where pr.role_id = ru.role_id and ru.user_id =#{adminId,jdbcType=BIGINT} ) r
 on pr.permission_id = r.permission_id
     </select>
 </mapper>

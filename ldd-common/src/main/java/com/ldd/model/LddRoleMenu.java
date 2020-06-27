@@ -1,17 +1,21 @@
 package com.ldd.model;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 
 public class LddRoleMenu implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
     private Long id;
 
-    @ApiModelProperty(value = "角色id")
+    /**
+     * 角色id
+     */
     private Long roleId;
 
-    @ApiModelProperty(value = "菜单id")
+    /**
+     * 菜单id
+     */
     private Long menuId;
 
     private static final long serialVersionUID = 1L;

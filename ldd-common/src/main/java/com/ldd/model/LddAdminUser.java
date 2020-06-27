@@ -1,36 +1,52 @@
 package com.ldd.model;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddAdminUser implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
     private Long userId;
 
-    @ApiModelProperty(value = "用户名")
+    /**
+     * 用户名
+     */
     private String username;
 
-    @ApiModelProperty(value = "md5加密密码串")
+    /**
+     * md5加密密码串
+     */
     private String password;
 
-    @ApiModelProperty(value = "用户头像路径")
+    /**
+     * 用户头像路径
+     */
     private String logo;
 
-    @ApiModelProperty(value = "手机号")
+    /**
+     * 手机号
+     */
     private String phone;
 
-    @ApiModelProperty(value = "邮箱")
+    /**
+     * 邮箱
+     */
     private String email;
 
-    @ApiModelProperty(value = "创建时间")
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
-    @ApiModelProperty(value = "最后登录时间")
+    /**
+     * 最后登录时间
+     */
     private Date loginTime;
 
-    @ApiModelProperty(value = "状态，0-禁用，1-正常")
+    /**
+     * 状态，0-禁用，1-正常
+     */
     private Integer status;
 
     private static final long serialVersionUID = 1L;

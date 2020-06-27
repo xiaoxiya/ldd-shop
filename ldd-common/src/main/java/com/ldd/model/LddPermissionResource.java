@@ -1,27 +1,37 @@
 package com.ldd.model;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class LddPermissionResource implements Serializable {
-    @ApiModelProperty(value = "主键")
+    /**
+     * 主键
+     */
     private Long permissionId;
 
-    @ApiModelProperty(value = "资源分类id")
+    /**
+     * 资源分类id
+     */
     private Long categoryId;
 
-    @ApiModelProperty(value = "权限名称")
+    /**
+     * 权限名称
+     */
     private String permissionName;
 
-    @ApiModelProperty(value = "权限url")
+    /**
+     * 权限url
+     */
     private String permissionUrl;
 
-    @ApiModelProperty(value = "描述")
+    /**
+     * 描述
+     */
     private String remark;
 
-    @ApiModelProperty(value = "创建时间")
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
