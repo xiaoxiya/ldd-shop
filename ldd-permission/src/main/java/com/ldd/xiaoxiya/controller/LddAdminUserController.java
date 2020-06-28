@@ -1,5 +1,6 @@
 package com.ldd.xiaoxiya.controller;
 
+import com.ldd.common.CommonPage;
 import com.ldd.common.ResponseResult;
 import com.ldd.model.LddAdminUser;
 import com.ldd.model.LddPermissionResource;
@@ -82,10 +83,13 @@ public class LddAdminUserController {
         return ResponseResult.failed(count, "更新用户失败");
     }
 
-    //@RequestMapping(value = "/searchByUsername", method = RequestMethod.POST)
-    //@ApiOperation(value = "查找用户")
-    //public ResponseResult searchByUsername(String username) {
-    //
-    //}
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @ApiOperation(value = "根据用户名分页获取用户列表")
+    public ResponseResult<CommonPage> searchByUsername(@RequestParam(value = "keyword", required = false)String keyword,
+                                                       @RequestParam(value = "pageSize", defaultValue = "5")Integer pageSize,
+                                                       @RequestParam(value = "pageSize", defaultValue = "1")Integer pageNum) {
+        List<LddAdminUser> adminUserList = adminUserService.getUserInfoList(keyword, pageSize, pageNum);
+        return ResponseResult.success(CommonPage.restPage(adminUserList));
+    }
 
 }

@@ -6,4 +6,16 @@
 select pr.role_id, pr.permission_id, ru.user_id from ldd_permission_role pr, ldd_role_user ru where pr.role_id = ru.role_id and ru.user_id =#{adminId,jdbcType=BIGINT} ) r
 on pr.permission_id = r.permission_id
     </select>
+    <select id="getMenuList"  resultType="com.ldd.model.LddMenu">
+     select r.* from ldd_role r left join
+(select rm.menu_id from ldd_role_menu rm left join ldd_role_user ru on rm.role_id = ru.role_id where ru.user_id = #{adminId,jdbcType=BIGINT}) rr
+on rr.menu_id = r.menu_id
+    </select>
+    <select id="getMenuListByRoleId"  resultType="com.ldd.model.LddMenu">
+     select r.* from ldd_role r left join ldd_role_menu rm  on rm.menu_id = r.menu_id where rm.role_id = #{roleId,jdbcType=BIGINT}
+    </select>
+    <select id="getResourceListByRoleId"  resultType="com.ldd.model.LddPermissionResource">
+      select r.* from ldd_permission_resource pr left join ldd_permission_role prole
+on prole.permission_id = pr.permission_id where prole.role_id = #{roleId,jdbcType=BIGINT}
+    </select>
 </mapper>

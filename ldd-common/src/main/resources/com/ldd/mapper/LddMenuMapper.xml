@@ -3,7 +3,7 @@
 <mapper namespace="com.ldd.mapper.LddMenuMapper">
   <resultMap id="BaseResultMap" type="com.ldd.model.LddMenu">
     <id column="menu_id" jdbcType="BIGINT" property="menuId" />
-    <result column="parant_id" jdbcType="BIGINT" property="parantId" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
     <result column="menu_level" jdbcType="INTEGER" property="menuLevel" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    menu_id, parant_id, menu_name, menu_level, icon, create_time
+    menu_id, parent_id, menu_name, menu_level, icon, create_time
   </sql>
   <select id="selectByExample" parameterType="com.ldd.model.LddMenuExample" resultMap="BaseResultMap">
     select
@@ -101,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ldd.model.LddMenu">
-    insert into ldd_menu (menu_id, parant_id, menu_name, 
+    insert into ldd_menu (menu_id, parent_id, menu_name, 
       menu_level, icon, create_time
       )
-    values (#{menuId,jdbcType=BIGINT}, #{parantId,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, 
+    values (#{menuId,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, 
       #{menuLevel,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -114,8 +114,8 @@
       <if test="menuId != null">
         menu_id,
       </if>
-      <if test="parantId != null">
-        parant_id,
+      <if test="parentId != null">
+        parent_id,
       </if>
       <if test="menuName != null">
         menu_name,
@@ -134,8 +134,8 @@
       <if test="menuId != null">
         #{menuId,jdbcType=BIGINT},
       </if>
-      <if test="parantId != null">
-        #{parantId,jdbcType=BIGINT},
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
       </if>
       <if test="menuName != null">
         #{menuName,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
       <if test="record.menuId != null">
         menu_id = #{record.menuId,jdbcType=BIGINT},
       </if>
-      <if test="record.parantId != null">
-        parant_id = #{record.parantId,jdbcType=BIGINT},
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
       </if>
       <if test="record.menuName != null">
         menu_name = #{record.menuName,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   <update id="updateByExample" parameterType="map">
     update ldd_menu
     set menu_id = #{record.menuId,jdbcType=BIGINT},
-      parant_id = #{record.parantId,jdbcType=BIGINT},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
       menu_name = #{record.menuName,jdbcType=VARCHAR},
       menu_level = #{record.menuLevel,jdbcType=INTEGER},
       icon = #{record.icon,jdbcType=VARCHAR},
@@ -198,8 +198,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.ldd.model.LddMenu">
     update ldd_menu
     <set>
-      <if test="parantId != null">
-        parant_id = #{parantId,jdbcType=BIGINT},
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
       </if>
       <if test="menuName != null">
         menu_name = #{menuName,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ldd.model.LddMenu">
     update ldd_menu
-    set parant_id = #{parantId,jdbcType=BIGINT},
+    set parent_id = #{parentId,jdbcType=BIGINT},
       menu_name = #{menuName,jdbcType=VARCHAR},
       menu_level = #{menuLevel,jdbcType=INTEGER},
       icon = #{icon,jdbcType=VARCHAR},

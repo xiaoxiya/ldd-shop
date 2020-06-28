@@ -1,5 +1,6 @@
 package com.ldd.dao;
 
+import com.ldd.model.LddMenu;
 import com.ldd.model.LddPermissionResource;
 
 import java.util.List;
@@ -17,4 +18,21 @@ public interface LddPermissionUserRelationDao {
      * @return 用户权限集合
      */
     List<LddPermissionResource> getUserPermission(Long adminId);
+
+    /**
+     * 根据用户id获取对应角色的菜单
+     * @param adminId
+     * @return
+     */
+    List<LddMenu> getMenuList(Long adminId);
+
+    /**
+     * 根据权限id获取对应角色的菜单
+     * @param roleId
+     * @return
+     */
+    List<LddMenu> getMenuListByRoleId(Long roleId);
+
+
+    List<LddPermissionResource> getResourceListByRoleId(Long roleId);
 }

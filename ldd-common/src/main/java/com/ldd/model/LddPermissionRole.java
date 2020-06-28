@@ -16,7 +16,7 @@ public class LddPermissionRole implements Serializable {
     /**
      * 权限资源id
      */
-    private String permissionId;
+    private Long permissionId;
 
     private static final long serialVersionUID = 1L;
 
@@ -36,11 +36,11 @@ public class LddPermissionRole implements Serializable {
         this.roleId = roleId;
     }
 
-    public String getPermissionId() {
+    public Long getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(String permissionId) {
+    public void setPermissionId(Long permissionId) {
         this.permissionId = permissionId;
     }
 

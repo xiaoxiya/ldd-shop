@@ -165,63 +165,63 @@ public class LddMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andParantIdIsNull() {
-            addCriterion("parant_id is null");
+        public Criteria andParentIdIsNull() {
+            addCriterion("parent_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdIsNotNull() {
-            addCriterion("parant_id is not null");
+        public Criteria andParentIdIsNotNull() {
+            addCriterion("parent_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdEqualTo(Long value) {
-            addCriterion("parant_id =", value, "parantId");
+        public Criteria andParentIdEqualTo(Long value) {
+            addCriterion("parent_id =", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdNotEqualTo(Long value) {
-            addCriterion("parant_id <>", value, "parantId");
+        public Criteria andParentIdNotEqualTo(Long value) {
+            addCriterion("parent_id <>", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdGreaterThan(Long value) {
-            addCriterion("parant_id >", value, "parantId");
+        public Criteria andParentIdGreaterThan(Long value) {
+            addCriterion("parent_id >", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("parant_id >=", value, "parantId");
+        public Criteria andParentIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("parent_id >=", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdLessThan(Long value) {
-            addCriterion("parant_id <", value, "parantId");
+        public Criteria andParentIdLessThan(Long value) {
+            addCriterion("parent_id <", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdLessThanOrEqualTo(Long value) {
-            addCriterion("parant_id <=", value, "parantId");
+        public Criteria andParentIdLessThanOrEqualTo(Long value) {
+            addCriterion("parent_id <=", value, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdIn(List<Long> values) {
-            addCriterion("parant_id in", values, "parantId");
+        public Criteria andParentIdIn(List<Long> values) {
+            addCriterion("parent_id in", values, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdNotIn(List<Long> values) {
-            addCriterion("parant_id not in", values, "parantId");
+        public Criteria andParentIdNotIn(List<Long> values) {
+            addCriterion("parent_id not in", values, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdBetween(Long value1, Long value2) {
-            addCriterion("parant_id between", value1, value2, "parantId");
+        public Criteria andParentIdBetween(Long value1, Long value2) {
+            addCriterion("parent_id between", value1, value2, "parentId");
             return (Criteria) this;
         }
 
-        public Criteria andParantIdNotBetween(Long value1, Long value2) {
-            addCriterion("parant_id not between", value1, value2, "parantId");
+        public Criteria andParentIdNotBetween(Long value1, Long value2) {
+            addCriterion("parent_id not between", value1, value2, "parentId");
             return (Criteria) this;
         }
 

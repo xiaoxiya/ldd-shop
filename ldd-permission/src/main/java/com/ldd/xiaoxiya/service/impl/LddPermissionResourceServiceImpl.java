@@ -1,5 +1,7 @@
 package com.ldd.xiaoxiya.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
 import com.ldd.mapper.LddPermissionResourceMapper;
 import com.ldd.model.LddPermissionResource;
 import com.ldd.model.LddPermissionResourceExample;
@@ -7,6 +9,7 @@ import com.ldd.xiaoxiya.service.LddPermissionResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,26 +30,40 @@ public class LddPermissionResourceServiceImpl implements LddPermissionResourceSe
 
     @Override
     public int create(LddPermissionResource lddResource) {
-        return 0;
+        lddResource.setCreateTime(new Date());
+        return lddPermissionResourceMapper.insert(lddResource);
     }
 
     @Override
     public int update(Long id, LddPermissionResource lddResource) {
-        return 0;
+        lddResource.setPermissionId(id);
+        return lddPermissionResourceMapper.updateByPrimaryKeySelective(lddResource);
     }
 
     @Override
     public LddPermissionResource getItem(Long id) {
-        return null;
+        return lddPermissionResourceMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int delete(Long id) {
-        return 0;
+        return lddPermissionResourceMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public List<LddPermissionResource> list(Long categoryId, String nameKeyword, String urlKeyword, Integer pageSize, Integer pageNum) {
-        return null;
+        PageHelper.startPage(pageNum, pageSize);
+        LddPermissionResourceExample example = new LddPermissionResourceExample();
+        LddPermissionResourceExample.Criteria criteria = example.createCriteria();
+        if (categoryId != null) {
+            criteria.andCategoryIdEqualTo(categoryId);
+        }
+        if(StrUtil.isNotEmpty(nameKeyword)){
+            criteria.andPermissionNameLike('%'+nameKeyword+'%');
+        }
+        if(StrUtil.isNotEmpty(urlKeyword)){
+            criteria.andPermissionUrlLike('%'+urlKeyword+'%');
+        }
+        return lddPermissionResourceMapper.selectByExample(example);
     }
 }

@@ -12,7 +12,7 @@ public class LddMenu implements Serializable {
     /**
      * 父级id
      */
-    private Long parantId;
+    private Long parentId;
 
     /**
      * 菜单名
@@ -44,12 +44,12 @@ public class LddMenu implements Serializable {
         this.menuId = menuId;
     }
 
-    public Long getParantId() {
-        return parantId;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setParantId(Long parantId) {
-        this.parantId = parantId;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getMenuName() {
@@ -91,7 +91,7 @@ public class LddMenu implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", menuId=").append(menuId);
-        sb.append(", parantId=").append(parantId);
+        sb.append(", parentId=").append(parentId);
         sb.append(", menuName=").append(menuName);
         sb.append(", menuLevel=").append(menuLevel);
         sb.append(", icon=").append(icon);
