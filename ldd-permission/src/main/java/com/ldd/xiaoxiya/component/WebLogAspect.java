@@ -1,7 +1,7 @@
 package com.ldd.xiaoxiya.component;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
+import cn.hutool.json.JSONObject;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -65,7 +65,7 @@ public class WebLogAspect {
      */
     @AfterReturning(value = "execution(public * com.ldd.xiaoxiya.controller.*.*(..))", returning = "ret")
     public void doAfterReturning(Object ret) throws Throwable {
-        LOGGER.info("通知方法会在目标方法返回后执行");
+        LOGGER.info("通知方法会在目标方法返回后执行,返回的值：{}", ret);
     }
 
     @Around("webLog()")
@@ -76,7 +76,7 @@ public class WebLogAspect {
         HttpServletRequest request = attributes.getRequest();
         //记录信息
         Map<String, Object> logMap = new HashMap<>();
-
+        LOGGER.info("-------环绕通知前--------");
         Object result = joinPoint.proceed();
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
@@ -93,7 +93,7 @@ public class WebLogAspect {
         logMap.put("parameter", getParameter(method, joinPoint.getArgs()));
         logMap.put("spendTime", (int) (endTime - startTime));
 
-        LOGGER.info("接收的参数：{}", JSONUtil.parseFromMap(logMap));
+        LOGGER.info("环绕通知后接收的参数：{}", new JSONObject(logMap).toString());
         return result;
     }
 

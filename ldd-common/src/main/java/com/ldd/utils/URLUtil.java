@@ -1,6 +1,5 @@
 package com.ldd.utils;
 
-import cn.hutool.core.exceptions.UtilException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
