@@ -101,7 +101,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
-            <version>5.3.7</version>
+            <version>5.8.19</version>
         </dependency>
         <!--没有validation对应的包，所以要想使用校验功能要手动引入包-->
         <dependency>
